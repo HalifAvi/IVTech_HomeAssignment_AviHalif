@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { doLogIn, doRegistration } from "../Redux/Actions/logInRegisterActions.js";
+import "./ComponentsStyle/LoginRegisterForm.css";
 
 
 const LoginRegisterForm = ({title, doLogIn, doRegistration}) => {
@@ -26,6 +27,8 @@ const LoginRegisterForm = ({title, doLogIn, doRegistration}) => {
         <>
             <div>
                 <div>
+                    <img src={`${process.env.REACT_APP_LOGO_IMG_URL}`} alt={"checked_Logo"} id={"logo-img-intro"}/>
+                    <h1>IVOverflow</h1>
                     <h3>{title} FORM</h3>
                 </div>
                 <Box component='form' sx={{m:1}} noValidate autoComplete="off">
