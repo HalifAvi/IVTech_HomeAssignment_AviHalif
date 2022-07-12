@@ -1,0 +1,30 @@
+@import "../constantsCSS.css";
+
+.filterSection-container {
+
+    position: fixed;
+    font-size: 40px;
+    top: 160px;
+    left: 40px;
+    z-index: 10000;
+    height: 10px;
+    width: 0px;
+    background-color: var(--clr-white);
+    border: 5px solid var(--clr-yellow);
+    content-visibility: hidden;
+    opacity: 0.9;
+}
+
+
+.filterSection-container:hover {
+
+    visibility: visible;
+    content-visibility: visible;
+    height: 400px;
+    width: 600px;
+    transition: all 01s ease-in-out;
+    opacity: 0.9;
+}
+
+
+

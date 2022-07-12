@@ -1,0 +1,13 @@
+[ 
+    {
+        "inputValue": "male",
+        "src": "./images/man.png", 
+        "name": "gender"
+    },
+    
+    {
+        "inputValue": "female", 
+        "src": "./images/woman.png",
+        "name": "gender"
+    } 
+]

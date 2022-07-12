@@ -1,0 +1,84 @@
+.calendar-section {
+
+    position: relative;
+    top: 100px;
+    left: 50px;
+    height: 470px;
+    padding-top: 50px;
+    padding-left: 50px;
+    background-color: var(--clr-black);
+    color:  var(--clr-white);
+    width: 600px;
+  }
+
+
+.react-calendar {
+
+    width: 500px;
+    height: 400px;
+    font-family: VAR(--clr-thin-font);
+    line-height: 6em;
+    border: 8px solid var(--clr-yellow);
+    box-shadow: 0 0 20px var(--clr-yellow);
+}
+
+.react-calendar__tile--active:enabled:hover {
+
+    background-color: var(--clr-black);
+}
+
+.previousRecepies-div {
+
+    color: var(--clr-black);
+}
+
+.react-calendar__tile--active {
+
+    background-color: var(--clr-yellow);
+}
+
+.react-calendar__navigation {
+
+    height: 40px;
+    background-color: var(--clr-yellow);
+}
+
+.react-calendar__tile--active {
+
+    background-color: var(--clr-black);
+}
+
+.react-calendar__navigation__label {
+
+    font-family: VAR(--clr-thin-font);
+    font-size: 30px;
+}
+
+.react-calendar__tile--active:enabled:hover, .react-calendar__tile--active:enabled:focus {
+
+    background: var(--clr-black);
+}
+
+.react-calendar__tile--now {
+
+    background: var(--clr-yellow);
+}
+
+.react-calendar__tile {
+
+    font-family: VAR(--clr-thin-font);
+    font-size: 20px;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+
+    font-family: VAR(--clr-thin-font);
+    font-size: 20px;
+    color: var(--clr-black);
+}
+
+.react-calendar__navigation__arrow {
+
+    font-size: 30px;
+
+}

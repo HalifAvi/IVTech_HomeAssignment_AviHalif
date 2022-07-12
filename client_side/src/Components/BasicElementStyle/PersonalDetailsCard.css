@@ -1,0 +1,74 @@
+@import "../constantsCSS.css";
+
+
+#personalDetailsCard-container {
+
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
+#personalDetailsCard-container:hover {
+
+    height: 505px;
+    width: 1260px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: var(--clr-white);
+    background-color: var(--clr-transpart);
+    border: 7px solid var(--clr-yellow);
+    box-shadow: 0 0 10px var(--clr-yellow), 0 0 80px var(--clr-black), 0 0 80px var(--clr-black);
+}
+
+
+#personalDetailsCard-img-container {
+
+    width: 350px;
+    height: 350px;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    box-shadow: 0 0 10px var(--clr-yellow), 0 0 100px var(--clr-yellow);
+    border: 10px solid var(--clr-yellow);
+    background-color: var(--clr-white);
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+} 
+
+#personalDetailsCard-weight-div {
+
+    position: absolute;
+    top: 10px;
+    right: 385px;
+    text-align: center;
+    font-family: var(--clr-thin-font);
+}
+
+#personalDetailsCard-height-div {
+
+    position: absolute;
+    top: 12px;
+    right: 500px;
+    text-align: center;
+    font-family: var(--clr-thin-font);
+}
+
+#personalDetailsCard-activity-div {
+
+    position: absolute;
+    top: 10px;
+    right: 245px;
+    text-align: center;
+    font-family: var(--clr-thin-font);
+    background-color: var(--clr-color-yellow);
+
+}
+
+#personalDetailsCard-caloriesScale-div {
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+

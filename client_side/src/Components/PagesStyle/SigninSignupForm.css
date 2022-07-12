@@ -1,0 +1,42 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#signinSignupForm-section {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    transition: 0.5s;
+    margin-left: 30px;
+}
+ 
+
+#signinSignupForm-container {
+
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+    box-shadow: 0 0 10px var(--clr-white);
+}
+
+#signinSignUpForm-left-side-div {
+
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#signinSignUpForm-logo-div {
+
+    position: fixed;
+    top: -20px;
+    left: 0px;
+}
+

@@ -1,0 +1,14 @@
+@import "../constantsCSS.css";
+
+#home-back-video, #signin-back-video, #signForm-back-video {
+
+    position: relative;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+

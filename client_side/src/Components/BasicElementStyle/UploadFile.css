@@ -1,0 +1,32 @@
+@import "../constantsCSS.css";
+
+
+#uploadFile-container {
+
+    margin-left: 15px;
+}
+  
+.uploadFile-choose-btt::-webkit-file-upload-button {
+
+    font-family: var(--clr-thin-font);
+    background: var(--clr-white);
+    margin-right: 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 7px 15px;
+}
+
+.uploadFile-choose-btt::-webkit-file-upload-button:hover {
+
+    background: var(--clr-black);
+    color: var(--clr-white);
+    box-shadow: 0 0 10px var(--clr-black);
+  }
+
+
+
+
+
+

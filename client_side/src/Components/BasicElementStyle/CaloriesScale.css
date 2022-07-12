@@ -1,0 +1,113 @@
+@import "../constantsCSS.css";
+
+.caloriesScale-skill-div {
+
+    width: 160px;
+    height: 160px;
+}
+
+.caloriesScale-outer-div {
+
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+                -6px -6px 10px -1px rgba(255,255,255,0.7)
+}
+
+.caloriesScale-inner-div {
+
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+                -0.5px -0.5px 0px rgba(255,255,255,1),
+                0.5px 0.5px 0px rgba(0,0,0,0.15),
+                0px 12px 10px -10px rgba(0,0,0,0.05);      
+}
+
+#caloriesScale-number-div {
+
+    position: absolute;
+    top: 55px;
+    font-size:28px; 
+    color: var(--clr-white);
+    font-family: var(--clr-thin-font);
+    text-shadow: 0 0 10px var(--clr-black), 0 0 20px var(--clr-black);
+}
+
+#caloriesScale-small-number-div {
+
+    position: absolute;
+    z-index: 1000;
+    top: 55px;
+    font-size:28px; 
+    color: var(--clr-white);
+    font-family: var(--clr-thin-font);
+    text-shadow: 0 0 10px var(--clr-black), 0 0 20px var(--clr-black);
+}
+
+#circle {
+
+    fill: none;
+    stroke: url(#GradientColor); /*Set the color*/
+    stroke-width: 12px;
+    stroke-dasharray: 440; 
+    stroke-dashoffset: 440; /*Set the length of strip '0' = 100% full*/ 
+    animation: anim 10s linear forwards;
+}
+
+#circle-small {
+
+    fill: none;
+    stroke: url(#GradientColor); /*Set the color*/
+    stroke-width: 12px;
+    stroke-dasharray: 320; 
+    stroke-dashoffset: 320; /*Set the length of strip '0' = 100% full*/ 
+    animation: anim 10s linear forwards;
+}
+
+svg {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+.caloriesScale-small-skill-div {
+
+    width: 120px;
+    height: 120px;
+  }
+  
+  .caloriesScale-small-outer-div {
+  
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+                -6px -6px 10px -1px rgba(255,255,255,0.7)
+  }
+  
+  .caloriesScale-small-inner-div {
+  
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+                -0.5px -0.5px 0px rgba(255,255,255,1),
+                0.5px 0.5px 0px rgba(0,0,0,0.15),
+                0px 12px 10px -10px rgba(0,0,0,0.05);      
+  }

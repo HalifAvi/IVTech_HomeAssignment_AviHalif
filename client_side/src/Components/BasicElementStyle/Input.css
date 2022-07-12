@@ -1,0 +1,48 @@
+
+
+.swappingSignFrontPanel-formBx .swappingSignFrontPanel-form form input.form-signup-input {
+
+    width: 45%;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--clr-black);
+    border: 2px solid var(--clr-white);
+    box-shadow: 0 0 20px var(--clr-white);
+    background-color: var(--clr-transparent);
+    font-family: var(--clr-script-font);
+    margin-left: 15px;
+}
+
+.swappingSignFrontPanel-formBx .swappingSignFrontPanel-form form input{
+
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--clr-black);
+    border: 2px solid var(--clr-white);
+    box-shadow: 0 0 20px var(--clr-white);
+    background-color: var(--clr-transparent);
+    font-family: var(--clr-script-font);
+ }
+
+ .swappingSignFrontPanel-formBx .swappingSignFrontPanel-form form input.form-signup-input-little {
+
+    width: 28%;
+    height: 25px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--clr-black);
+    border: 2px solid var(--clr-white);
+    box-shadow: 0 0 20px var(--clr-white);
+    background-color: var(--clr-transparent);
+    font-family: var(--clr-script-font);
+    margin-left: 15px;
+    margin-top: 5px;
+}

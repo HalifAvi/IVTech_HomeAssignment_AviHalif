@@ -1,0 +1,27 @@
+.swappingSignFrontPanel-formBx .swappingSignFrontPanel-form form{
+
+    width: 100%;
+    display: flex;
+    margin-left: -20px;
+    flex-direction: column;
+}
+
+.form-radioBtt {
+
+   display: flex;
+   flex-direction: row;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

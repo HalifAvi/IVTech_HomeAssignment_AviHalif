@@ -1,0 +1,96 @@
+@import "../constantsCSS.css";
+
+
+/******************************* 'Home' Page ********************************/
+
+
+
+#home-signin-btt, #home-signup-btt {
+
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: 30px;
+    background-color: transparent;
+    border: var(--clr-yellow) 4px solid;
+    color: var(--clr-white);
+    font-family: var(--clr-thin-font);
+}
+
+button#home-signin-btt:hover, button#home-signup-btt:hover {
+
+    color: var(--clr-black);
+    background-color: var(--clr-white);
+    box-shadow: 0 0 10px var(--clr-white);
+    font-weight: bold;
+}
+
+
+
+/******************************* 'SigninSignupForm' Page ********************************/
+
+#signinSignupForm-swipe-signup-btt, #signinSignupForm-swipe-signin-btt {
+
+    background-color:  var(--clr-transparent);
+    border: 3px solid var(--clr-white);
+    font-family: var(--clr-thin-font);
+    font-size: 40px;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 30px;
+    width: 170px;
+}
+
+#signinSignupForm-swipe-signup-btt:hover, #signinSignupForm-swipe-signin-btt:hover {
+
+    background-color:  var(--clr-yellow);
+    color: var(--clr-white);
+    box-shadow: 0 0 10px var(--clr-white);
+}
+
+/******************************* 'swappingSignFrontPanel' Element ********************************/
+
+
+.swappingSignFrontPanel-formBx .swappingSignFrontPanel-form form input[type="submit"]{
+
+    background: var(--clr-black);
+    font-size: 30px;
+    padding: 0px;
+    color: var(--clr-white);
+    border: 2px solid var(--clr-white);
+    font-family: var(--clr-thin-font);
+    max-width: 140px;
+    height: 40px;
+    cursor: pointer;
+    margin-top: 0px;
+    margin-left: 38px;
+    box-shadow: 0 0 10px var(--clr-white);
+ }
+
+ .swappingSignFrontPanel-formBx .swappingSignFrontPanel-form form input[type="submit"]:hover{
+
+   background-color: var(--clr-white);
+   color: var(--clr-black);
+   border: 2px solid var(--clr-black);
+   box-shadow: 0 0 60px var(--clr-white);
+}
+
+
+
+/******************************* 'RecpieDescriptionCard' Element ********************************/
+
+
+.recpieDescriptionCard-button {
+
+    width: 150px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: 20px;
+    background-color: var(--clr-black);
+    border: var(--clr-yellow) 4px solid;
+    color: var(--clr-white);
+    font-family: var(--clr-thin-font);
+}
+
+

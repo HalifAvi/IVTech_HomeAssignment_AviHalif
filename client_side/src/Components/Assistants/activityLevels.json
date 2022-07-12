@@ -1,0 +1,36 @@
+[ 
+    {
+        "inputValue": "1.2",
+        "src": "./images/level-1.png", 
+        "name": "levels",
+        "dataTip": "You get little to no exercise"
+    },
+    
+    {
+        "inputValue": "1.375", 
+        "src": "./images/level-2.png",
+        "name": "levels",
+        "dataTip": "You exercise lightly (1-3 days per week)"
+    },
+
+    {
+        "inputValue": "1.55",
+        "src": "./images/level-3.png", 
+        "name": "levels",
+        "dataTip": "You exercise moderately (3-5 days per week)"
+    },
+
+    {
+        "inputValue": "1.725",
+        "src": "./images/level-4.png", 
+        "name": "levels",
+        "dataTip": "You exercise heavily (6-7 days per week)"
+    },
+
+    {
+        "inputValue": "1.9",
+        "src": "./images/level-5.png", 
+        "name": "levels",
+        "dataTip": "You exercise very heavily (i.e.2x per day)"
+    }
+]

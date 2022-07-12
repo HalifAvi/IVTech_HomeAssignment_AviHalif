@@ -1,0 +1,18 @@
+@import "../constantsCSS.css";
+
+
+.todayRecipes-div {
+
+    color: var(--clr-white);
+    background-color: var(--clr-black);
+  }
+  
+  
+  .todayRecipes-caloriesScale-div {
+  
+    position: absolute;
+    top: 13px;
+    left: 300px;
+    margin: 0;
+    padding: 0;
+  }

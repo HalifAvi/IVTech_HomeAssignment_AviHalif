@@ -1,0 +1,20 @@
+@import "../constantsCSS.css";
+
+
+
+
+.generalRecepies-div {
+
+  color: var(--clr-white);
+  background-color: var(--clr-black);
+}
+
+
+.generalRecepies-caloriesScale-div {
+
+  position: absolute;
+  top: 13px;
+  left: 300px;
+  margin: 0;
+  padding: 0;
+}
