@@ -5,26 +5,30 @@ import { useNavigate } from "react-router-dom";
 // We can decode the email
 // if we will import jwt from jetwebtoken
 // we can do also verification to the token that we are getting
-// import jwt_decode from "jwt-decode";
+// import jwt from "jetwebtoken";
+
+
+import jwt_decode from "jwt-decode";
 
 // cause we send GET request
 import axios from "axios";
 
 
-
-// COMPONENT TO WRAP ATHOUR COMPONENT IN OUR FROMT END TO VERITY THE ACCESS BEFORE ENTERING
+// COMPONENT TO WRAP OTHER COMPONENT IN OUR FRONT END TO VERITY THE ACCESS BEFORE ENTERING
 export const Auth = (props) => {
 
     // In case we are not authorize to access so use the redirect
-    const [redirect, setRedirect] = useState(null);
+    const [redirect, setRedirect] = useState(false);
     const navigate = useNavigate();
 
 
     useEffect( ()=>{
 
-        try{
+        const verify = async() => {
 
-            const response = axios.get("http://localhost:5000/token",{
+            try{
+
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_VERIFY_TOKEN_URL}`,{
 
                 withCredentials: true,
                 headers: {
@@ -32,17 +36,22 @@ export const Auth = (props) => {
                     'Access-Control-Allow-Origin' : '*',
                     'Content-Type' : 'application/json'
                 }
-            });
+                    
+                });
 
-            console.log('auth response', response);
-            setRedirect(1);
+                console.log('auth response', response);
+                setRedirect(true);
+
+            } catch(e){
+
+                console.log(e)
+
+                navigate('/login');
+            }
         }
-        catch(e){
 
-            // console.log(e)
-            navigate('/login');
-        }
-
+        verify();
+    
     }, [])
 
     return (

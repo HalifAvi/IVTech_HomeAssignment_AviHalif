@@ -4,11 +4,14 @@
 // Use Environment File
 import dotenv from 'dotenv';
 dotenv.config();
+
 // NodeJs Framework 
 import express from 'express';
+
 // Enable CORS with various options
 import cors from 'cors';
 
+// We'll take the cookie from the Http-cookie
 import cookieParser from 'cookie-parser';
 
 // Import Employee routes

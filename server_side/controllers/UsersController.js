@@ -1,16 +1,14 @@
 import Users from "../models/Users.js";
-import db from '../config/db.js';
-
-
 
 // Hasing the password - before sending to db
 import bcrypt from 'bcrypt';
 
 // To create an access token - to define the expiration time
 // We will send this token in the cookie to the front end
-// And we can wrap 'Home' component with that token - and the user'll have access to this page according 
+// And we can wrap any component with that token - and the user'll have access to this page according 
 // to expiry time we defined in this token
 import jwt from 'jsonwebtoken';
+
 
 
 export const register = async (req, res) => {
@@ -20,6 +18,7 @@ export const register = async (req, res) => {
             password,
             fullname,
             nickname
+
         } = req.body;
 
 
@@ -39,7 +38,6 @@ export const register = async (req, res) => {
         })
 
         res.json({msg: 'Registered Successfully!'})
-
     }
     catch(error){
 
@@ -88,7 +86,7 @@ export const logIn = async (req, res) => {
         const accessToken = jwt.sign({userId, email, fullname, nickname},
         process.env.ACCESS_TOKEN_SECRET, {
                 
-            expiresIn: '60s'
+            expiresIn: '30s'
                 
         })
                 
@@ -97,7 +95,7 @@ export const logIn = async (req, res) => {
         res.cookie('accessToken', accessToken, {
             
             httpOnly: true,
-            maxAge: 60 * 1000 // 60 seconds
+            maxAge: 30 * 1000 // 60 seconds
         }); 
                 
         // We send back the access token 

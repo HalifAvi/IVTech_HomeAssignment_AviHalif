@@ -16,16 +16,13 @@ export const logInRegisterReducer = (state=initStatelogInRegister, action={}) =>
 
     switch(action.type){
 
+        case REGISTER:
+
+            return {...state}
+
         case LOG_IN: 
 
-            return {
-                    ...state,
-                    currDisplayedProtein: action.payload.currDisplayedProtein,
-                    currDisplayedIron: action.payload.currDisplayedIron,
-                    currDisplayedVitaminC: action.payload.currDisplayedVitaminC,
-                    isExistData: action.payload.isExistData,
-                    displayedDate : action.payload.displayedDate
-                }
+            return {...state}
 
         default: 
 

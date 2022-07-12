@@ -30,11 +30,10 @@ export const doLogIn = (email, password, navigate) => async (dispatch) => {
 
         console.log("login response", response);
 
-        // dispatch({
+        dispatch({
     
-        //     type: LOG_IN,
-        //     payload: response
-        // })
+            type: LOG_IN
+        })
 
         // Navigate to home in case login successfuly
         navigate('/home');
@@ -71,14 +70,13 @@ export const doRegistration = (email, password, nickName, fullName, navigate) =>
 
         console.log("register response", response);
 
-                // dispatch({
+        dispatch({
     
-                //     type: LOG_IN,
-                //     payload: response
-                // })
+            type: REGISTER
+        })
 
-                // Navigate to login in case the registration successfuly
-                navigate('/login');
+        // Navigate to login in case the registration successfuly
+        navigate('/login');
     }
     catch(e) {
 
