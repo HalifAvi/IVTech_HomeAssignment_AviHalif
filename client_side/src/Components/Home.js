@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Nav from './Nav';
+import PopUpAddQuestion from "./PopUpAddQuestion";
+import { retriveUsersDataFromAccessToken } from "../Redux/Actions/logInRegisterActions.js";
+import { getAllQuestions } from "../Redux/Actions/questionsActions.js";
+import { connect } from "react-redux";
 
-const Home = () => {
+
+const Home = ({retriveUsersDataFromAccessToken, allQuestionsArr, getAllQuestions}) => {
+
+    useEffect(()=>{
+
+        retriveUsersDataFromAccessToken();
+        getAllQuestions();
+    }, [])
 
     return(
         <>
-            <h1>Home Page</h1>
+            <Nav />
+            <PopUpAddQuestion />
+            {console.log( allQuestionsArr )}
         </>
     )
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+
+    return{
+
+        allQuestionsArr : state.questionsReducer.allQuestionsArr
+    }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+
+    return{
+
+        retriveUsersDataFromAccessToken : ()=> dispatch(retriveUsersDataFromAccessToken()),
+        getAllQuestions : ()=> dispatch(getAllQuestions())
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+

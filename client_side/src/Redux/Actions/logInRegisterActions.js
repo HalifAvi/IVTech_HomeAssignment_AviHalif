@@ -1,12 +1,14 @@
 import {
 
     LOG_IN,
-    REGISTER
+    REGISTER,
+    RETRIVE_USERS_DATA
 
 } from '../reduxConstants';
 
 import axios from 'axios';
 import {toast} from "react-toastify";
+import jwt_decode from 'jwt-decode';
 
 
 
@@ -28,11 +30,12 @@ export const doLogIn = (email, password, navigate) => async (dispatch) => {
             }
         })
 
-        console.log("login response", response);
+        const accessToken = response.data;
 
         dispatch({
     
-            type: LOG_IN
+            type: LOG_IN,
+            payload: accessToken
         })
 
         // Navigate to home in case login successfuly
@@ -68,8 +71,6 @@ export const doRegistration = (email, password, nickName, fullName, navigate) =>
             }
         })
 
-        console.log("register response", response);
-
         dispatch({
     
             type: REGISTER
@@ -85,6 +86,20 @@ export const doRegistration = (email, password, nickName, fullName, navigate) =>
     }
 }
 
+
+export const retriveUsersDataFromAccessToken = () => async (dispatch, getStatus) => {
+
+    let {accessToken} = getStatus().logInRegisterReducer;
+
+    // Retrive the user's data from accessToken
+    let decode = jwt_decode(accessToken.accessToken);
+
+    dispatch ({
+
+        type: RETRIVE_USERS_DATA,
+        payload: decode
+    })
+}
 
 
 

@@ -14,8 +14,9 @@ import cors from 'cors';
 // We'll take the cookie from the Http-cookie
 import cookieParser from 'cookie-parser';
 
-// Import Employee routes
-import UsersRoute from "./routes/users.js"; 
+// Import routes
+import UsersRoute from "./routes/users.js";
+import QuestionsRoute from "./routes/questions.js";
 
 // MongoDB connection
 import db from './config/db.js';
@@ -50,3 +51,4 @@ app.listen(process.env.PORT||8080, ()=> {
 
 
 app.use('/api/users', UsersRoute);
+app.use('/api/questions', QuestionsRoute);
