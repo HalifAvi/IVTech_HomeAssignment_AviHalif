@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addNewQuestion } from "../Redux/Actions/questionsActions";
+import { handleSubmitQuestion } from "../AssistantFunctins/PopUpAddQuestionFun.js";
+import { getAllQuestions } from "../Redux/Actions/questionsActions.js";
 
 
 
-
-const PopUpAddQuestion = ({addNewQuestion}) => {
+const PopUpAddQuestion = ({addNewQuestion, getAllQuestions}) => {
 
     const [title, setTitle] = useState('');
     const [question, setQuestion] = useState('');
@@ -28,7 +29,7 @@ const PopUpAddQuestion = ({addNewQuestion}) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="message-text" className="col-form-label">Question</label>
-                            <textarea onChange={(e)=>setQuestion(e.target.value)} className="form-control" id="message-text"></textarea>
+                            <textarea onChange={(e)=>setQuestion(e.target.value)} type="text" className="form-control" id="message-text"></textarea>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="recipient-name" className="col-form-label">Tags separated by ,</label>
@@ -37,7 +38,7 @@ const PopUpAddQuestion = ({addNewQuestion}) => {
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button onClick={()=>addNewQuestion(title, question, tags)} type="button" data-bs-dismiss="modal" aria-label="Close" className="btn btn-primary">Submit</button>
+                        <button onClick={()=>handleSubmitQuestion(addNewQuestion, title, question, tags, getAllQuestions)} type="button" data-bs-dismiss="modal" aria-label="Close" className="btn btn-primary">Submit</button>
                     </div>
                     </div>
                 </div>
@@ -51,8 +52,10 @@ const mapDispatchToProps = (dispatch) => {
 
     return{
 
+        getAllQuestions : ()=> dispatch(getAllQuestions()),
         addNewQuestion : (title, question, tags)=> dispatch(addNewQuestion(title, question, tags))
     }
 }
+
 
 export default connect(null, mapDispatchToProps)(PopUpAddQuestion);

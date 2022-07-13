@@ -14,6 +14,7 @@ const QuestionsList = ({questionsArrToDisplay}) => {
                     return <QuestionCard key={idx} question={question}/>
                 })
             }   
+            {console.log("listttttt")}
         </>
     )
 }

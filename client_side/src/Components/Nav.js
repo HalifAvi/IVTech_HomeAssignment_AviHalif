@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
 
     return{
 
-        stringToSearch : (string)=> dispatch(stringToSearch(string)),
+        stringToSearch : (string)=> dispatch(stringToSearch(string))
     }
 }
 

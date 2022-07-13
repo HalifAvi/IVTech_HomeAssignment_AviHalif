@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from './Nav';
 import PopUpAddQuestion from "./PopUpAddQuestion";
 import { retriveUsersDataFromAccessToken } from "../Redux/Actions/logInRegisterActions.js";
@@ -13,7 +13,13 @@ const Home = ({retriveUsersDataFromAccessToken, getAllQuestions}) => {
 
         retriveUsersDataFromAccessToken();
         getAllQuestions();
+
     }, [])
+
+    // useEffect(()=>{
+
+    //     setRefreshHome(!refreshHome);
+    // })
 
     return(
         <>
@@ -23,7 +29,6 @@ const Home = ({retriveUsersDataFromAccessToken, getAllQuestions}) => {
         </>
     )
 }
-
 
 const mapDispatchToProps = (dispatch) => {
 
