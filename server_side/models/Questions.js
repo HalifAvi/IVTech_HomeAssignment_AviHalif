@@ -7,6 +7,9 @@ const Questions = db.define('allquestions',{
     userid: {
         type: DataTypes.INTEGER
     },
+    nickname: {
+        type: DataTypes.INTEGER
+    },
     title: {
         type: DataTypes.STRING
     },

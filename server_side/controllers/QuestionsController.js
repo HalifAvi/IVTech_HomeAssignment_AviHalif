@@ -6,6 +6,7 @@ export const addQuestion = async (req, res) => {
 
     const {
         userId, 
+        nickname,
         title,
         question,
         tags
@@ -18,12 +19,13 @@ export const addQuestion = async (req, res) => {
         const answer = await Questions.create({
 
             userid: userId,
+            nickname: nickname,
             title: title,
             question: question,
             tags: tags
         })
 
-        res.json({msg: 'New Question Was Added Successfully!'})
+        res.json(answer.dataValues.createdAt)
     }
     catch(error){
 

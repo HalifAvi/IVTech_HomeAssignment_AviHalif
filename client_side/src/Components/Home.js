@@ -4,9 +4,10 @@ import PopUpAddQuestion from "./PopUpAddQuestion";
 import { retriveUsersDataFromAccessToken } from "../Redux/Actions/logInRegisterActions.js";
 import { getAllQuestions } from "../Redux/Actions/questionsActions.js";
 import { connect } from "react-redux";
+import QuestionsList from "./QuestionsList";
 
 
-const Home = ({retriveUsersDataFromAccessToken, allQuestionsArr, getAllQuestions}) => {
+const Home = ({retriveUsersDataFromAccessToken, getAllQuestions}) => {
 
     useEffect(()=>{
 
@@ -18,17 +19,9 @@ const Home = ({retriveUsersDataFromAccessToken, allQuestionsArr, getAllQuestions
         <>
             <Nav />
             <PopUpAddQuestion />
-            {console.log( allQuestionsArr )}
+            <QuestionsList />
         </>
     )
-}
-
-const mapStateToProps = (state) => {
-
-    return{
-
-        allQuestionsArr : state.questionsReducer.allQuestionsArr
-    }
 }
 
 
@@ -42,5 +35,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);
 

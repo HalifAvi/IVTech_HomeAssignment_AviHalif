@@ -55,7 +55,7 @@ export const doRegistration = (email, password, nickName, fullName, navigate) =>
 
     try{ 
 
-        let response = await axios.post(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_REGISTER_URL}`,{
+        await axios.post(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_REGISTER_URL}`,{
             
             email: email, 
             password: password,

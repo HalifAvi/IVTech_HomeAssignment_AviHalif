@@ -3,8 +3,11 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Link } from "react-router-dom";
 import "./ComponentsStyle/Nav.css";
+import { stringToSearch } from "../Redux/Actions/questionsActions.js";
+import { connect } from "react-redux";
 
-const Nav = () => {
+
+const Nav = ({stringToSearch}) => {
 
     return(
         <>
@@ -12,7 +15,7 @@ const Nav = () => {
                 <div className="container-fluid">
                     <img id={"logo-img-navbar"} src={`${process.env.REACT_APP_LOGO_IMG_URL}`} alt={"checked_Logo"}/>
                     <form className="d-flex p-2 h-25" role="search">
-                        <input className="form-control me-5" type="search" placeholder="Search" aria-label="Search"/>
+                        <input onChange={(e)=>stringToSearch(e.target.value)} className="form-control me-5" type="search" placeholder="Search" aria-label="Search"/>
                         <button className="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Ask question</button>
                     </form>
                 </div>
@@ -21,8 +24,15 @@ const Nav = () => {
     )
 }
 
-export default Nav;
+const mapDispatchToProps = (dispatch) => {
 
+    return{
+
+        stringToSearch : (string)=> dispatch(stringToSearch(string)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Nav);
 
             {/* <Stack spacing={2} direction="row">
                 <Button component={Link} to={'/home'}>Home</Button>

@@ -86,7 +86,7 @@ export const logIn = async (req, res) => {
         const accessToken = jwt.sign({userId, email, fullname, nickname},
         process.env.ACCESS_TOKEN_SECRET, {
                 
-            expiresIn: '500s'
+            expiresIn: '3600s'
                 
         })
                 
@@ -95,7 +95,7 @@ export const logIn = async (req, res) => {
         res.cookie('accessToken', accessToken, {
             
             httpOnly: true,
-            maxAge: 500 * 1000 // 60 seconds
+            maxAge: 3600 * 1000 // 3600 seconds = 1hour
         }); 
                 
         // We send back the access token 

@@ -1,7 +1,8 @@
 import {
 
     ADD_QUESTION,
-    SET_ALL_QUESTIONS_ARR
+    SET_ALL_QUESTIONS_ARR,
+    CHANGE_DISPLAYED_QUESTIONS
 
 } from '../reduxConstants';
 
@@ -38,13 +39,14 @@ export const getAllQuestions = () => async (dispatch) => {
 
 export const addNewQuestion = (title, question, tags) => async (dispatch, getStatus) => {
 
-    let {userId} = getStatus().logInRegisterReducer;
+    let {userId, nickname} = getStatus().logInRegisterReducer;
 
     try{
 
         let response = await axios.post(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_ADD_QUESTION_URL}`,{
 
             userId: userId, 
+            nickname: nickname,
             title: title,
             question: question,
             tags: tags
@@ -61,6 +63,7 @@ export const addNewQuestion = (title, question, tags) => async (dispatch, getSta
         const newQuestion = {
 
             userId: userId, 
+            createdAt: response.data,
             title: title,
             question: question,
             tags: tags
@@ -77,3 +80,24 @@ export const addNewQuestion = (title, question, tags) => async (dispatch, getSta
         console.log(e);
     }
 }
+
+
+
+export const stringToSearch = (stringToSearch) => async (dispatch, getStatus) => {
+
+    const {allQuestionsArr} = getStatus().questionsReducer;
+
+    const questionsArrToDisplay = allQuestionsArr.filter((question)=> {
+
+        return (question.title).includes(stringToSearch)
+    })
+
+    dispatch ({
+
+        type: CHANGE_DISPLAYED_QUESTIONS,
+        payload: questionsArrToDisplay
+    })
+}
+
+
+
