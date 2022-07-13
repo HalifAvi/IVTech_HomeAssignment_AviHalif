@@ -49,7 +49,7 @@ export const addNewQuestion = (title, question, tags) => async (dispatch, getSta
             nickname: nickname,
             title: title,
             question: question,
-            tags: tags
+            tags: tags,
         },{
 
             withCredentials: true,

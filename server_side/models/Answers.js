@@ -3,24 +3,18 @@ import db from "../config/db.js";
 
 const {DataTypes} = Sequelize;
 
-const Questions = db.define('allquestions',{
+const Answers = db.define('allanswers',{
     userid: {
+        type: DataTypes.INTEGER
+    },
+    questionId: {
         type: DataTypes.INTEGER
     },
     nickname: {
         type: DataTypes.INTEGER
     },
-    title: {
+    answer: {
         type: DataTypes.STRING
-    },
-    question: {
-        type: DataTypes.STRING
-    },
-    tags: {
-        type: DataTypes.STRING
-    },
-    votes: {
-        type: DataTypes.INTEGER
     },
     createdAt: {    
         field: 'createdat', 
@@ -32,7 +26,7 @@ const Questions = db.define('allquestions',{
     }
 }, {freezeTableName: true})
 
-export default Questions;
+export default Answers;
 
 
 

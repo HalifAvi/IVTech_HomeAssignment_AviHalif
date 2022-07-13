@@ -16,7 +16,6 @@ const cleanInputs = () => {
         input.value = '';
 
     })
-
 }
 
 

@@ -22,7 +22,8 @@ export const addQuestion = async (req, res) => {
             nickname: nickname,
             title: title,
             question: question,
-            tags: tags
+            tags: tags,
+            votes: 0
         })
 
         res.json(answer.dataValues.createdAt)

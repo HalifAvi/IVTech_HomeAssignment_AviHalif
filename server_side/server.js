@@ -17,6 +17,8 @@ import cookieParser from 'cookie-parser';
 // Import routes
 import UsersRoute from "./routes/users.js";
 import QuestionsRoute from "./routes/questions.js";
+import AnswersRoute from "./routes/answers.js";
+
 
 // MongoDB connection
 import db from './config/db.js';
@@ -52,3 +54,4 @@ app.listen(process.env.PORT||8080, ()=> {
 
 app.use('/api/users', UsersRoute);
 app.use('/api/questions', QuestionsRoute);
+app.use('/api/answers', AnswersRoute);
