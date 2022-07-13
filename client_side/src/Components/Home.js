@@ -16,11 +16,7 @@ const Home = ({retriveUsersDataFromAccessToken, getAllQuestions}) => {
 
     }, [])
 
-    // useEffect(()=>{
-
-    //     setRefreshHome(!refreshHome);
-    // })
-
+    
     return(
         <>
             <Nav />

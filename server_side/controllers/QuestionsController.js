@@ -53,3 +53,38 @@ export const getAllQuestions = async (req, res) => {
         res.status(404).json({msg: 'Error To Add An New Question!'})
     }
 }
+
+
+// http://localhost:5000/api/questions/3/-5   ---> (questionId)/(newVotes)
+export const voteToQuestion = async (req, res) => {
+
+    let questionId = req.params.questionId;
+    let newVotes = req.params.newVotes;
+
+    try{
+
+        // Update the votes score to specific question
+        const answer = await Questions.update(
+            {
+
+                votes: newVotes
+
+            },
+            {
+                where: { 
+                    
+                    id: questionId
+                }   
+            })    
+            
+            // לבדוק אם מחזיר באמת את השורה המעודכנת
+        res.json(updatedRow)
+    }
+    catch(error){
+
+        console.log(error)
+
+        res.status(404).json({msg: 'Error To Add An New Question!'})
+    }
+}
+

@@ -7,15 +7,16 @@ import QuestionCard from "./QuestionCard";
 const QuestionsList = ({questionsArrToDisplay}) => {
 
     return(
-        <>
-            {
-                questionsArrToDisplay.map((question, idx)=>{
+        <div className="d-flex flex-row justify-content-center">
+            <div className={"col-md-6 justify-content-center w-50 ms-5"}>
+                {
+                    questionsArrToDisplay.map((question, idx)=>{
 
-                    return <QuestionCard key={idx} question={question}/>
-                })
-            }   
-            {console.log(questionsArrToDisplay)}
-        </>
+                        return <QuestionCard key={idx} question={question}/>
+                    })
+                }  
+            </div>
+        </div>
     )
 }
 
