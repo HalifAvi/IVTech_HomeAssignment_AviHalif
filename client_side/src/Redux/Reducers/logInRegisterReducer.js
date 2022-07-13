@@ -7,7 +7,7 @@ import {
 } from '../reduxConstants';
 
 
-const initStatelogInRegister = {
+const initStatelogInReducer = {
 
     accessToken: '',
     email : '',
@@ -17,7 +17,7 @@ const initStatelogInRegister = {
 }
 
 
-export const logInRegisterReducer = (state=initStatelogInRegister, action={}) => {
+export const logInRegisterReducer = (state=initStatelogInReducer, action={}) => {
 
     switch(action.type){
 

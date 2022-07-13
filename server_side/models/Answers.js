@@ -7,7 +7,7 @@ const Answers = db.define('allanswers',{
     userid: {
         type: DataTypes.INTEGER
     },
-    questionId: {
+    questionid: {
         type: DataTypes.INTEGER
     },
     nickname: {

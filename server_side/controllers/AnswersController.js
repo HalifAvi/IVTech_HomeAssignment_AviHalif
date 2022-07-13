@@ -35,10 +35,10 @@ export const addAnswer = async (req, res) => {
 }
 
 
-// http://localhost:5000/api/answers/3   ---> (questionId)
+// http://localhost:5000/api/answers/getAllAnswersByQuestionId/3   ---> (questionId)
 export const getAllAnswersByQuestionId = async (req, res) => {
 
-    let questionID = req.params.questionID
+    let questionID = req.params.questionID;
 
     try{
 
@@ -51,7 +51,7 @@ export const getAllAnswersByQuestionId = async (req, res) => {
             }
         });
         
-        res.json(answer)
+        res.json(answer);
     }
     catch(error){
 

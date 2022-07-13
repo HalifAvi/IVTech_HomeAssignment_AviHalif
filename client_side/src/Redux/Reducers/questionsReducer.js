@@ -7,14 +7,14 @@ import {
 } from '../reduxConstants';
 
 
-const initStateQuestionsRegister = {
+const initStateQuestionsReducer = {
 
     allQuestionsArr : [],
     questionsArrToDisplay : []
 }
 
 
-export const questionsReducer = (state=initStateQuestionsRegister, action={}) => {
+export const questionsReducer = (state=initStateQuestionsReducer, action={}) => {
 
     switch(action.type){
 

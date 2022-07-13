@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import {logInRegisterReducer} from './Redux/Reducers/logInRegisterReducer.js';
 import {questionsReducer} from './Redux/Reducers/questionsReducer.js';
+import {answersReducer} from './Redux/Reducers/answersReducer.js';
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 
-const rootReducer = combineReducers({logInRegisterReducer, questionsReducer});
+const rootReducer = combineReducers({logInRegisterReducer, questionsReducer, answersReducer});
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

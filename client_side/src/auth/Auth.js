@@ -39,7 +39,6 @@ export const Auth = (props) => {
                     
                 });
 
-                console.log('auth response', response);
                 setRedirect(true);
 
             } catch(e){

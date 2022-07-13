@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import TagName from "./TagName";
 import ScoreLabel from "./ScoreLabel";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 
 
 
-const QuestionCard = ({question}) => {
+const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, allAnswersArr}) => {
+
+    const allAnswerOfThisQuestion = allAnswersArr.find(element => element.questionId == question.id);
+
+    useEffect(()=>{
+
+        const getAnswers = async() => {
+
+            try {
+
+                await getAllAnswersOfSpecificQuestion(question.id);
+            
+            } catch(e){
+
+                console.log(e)
+            }
+        }
+
+        getAnswers();
+
+    }, [])
+
 
     return(
             <div>
@@ -27,15 +51,30 @@ const QuestionCard = ({question}) => {
                         </p>
                     </div>
                     <ScoreLabel score={question.votes} labelName={"votesScore"}/>
-                    <ScoreLabel score={question.votes} labelName={"answersScore"}/>
+                    <ScoreLabel score={allAnswerOfThisQuestion !== undefined ? allAnswerOfThisQuestion.allAnswerArr.length : 0} labelName={"answersScore"}/>
                 </Card.Body>
                 </Card>
             </div>
     );
 }
 
+const mapStateToProps = (state) => {
 
-export default QuestionCard;
+    return{
+
+        allAnswersArr : state.answersReducer.allAnswersArr
+    }
+}
+
+const mapDispatcToProps = (dispatch) => {
+
+    return{
+
+        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatcToProps)(QuestionCard);
 
 
        
