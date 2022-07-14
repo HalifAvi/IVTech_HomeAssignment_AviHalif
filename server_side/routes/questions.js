@@ -3,8 +3,7 @@ import {VerifyToken} from '../middleware/VerifyToken.js';
 import {
 
     addQuestion,
-    getAllQuestions,
-    voteToQuestion
+    getAllQuestions
 
  } from '../controllers/QuestionsController.js';
 
@@ -13,7 +12,5 @@ const router = express.Router();
 
 router.post('/createQuestion', VerifyToken, addQuestion);
 router.get('/getQuestions', VerifyToken, getAllQuestions);
-router.put('/voteToQuestion', VerifyToken, voteToQuestion);
-
 
 export default router;

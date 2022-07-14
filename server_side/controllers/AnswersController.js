@@ -21,7 +21,8 @@ export const addAnswer = async (req, res) => {
             userid: userId,
             questionid: questionId,
             nickname: nickname,
-            answer: userAnswer
+            answer: userAnswer,
+            score: 0
         })
 
         res.json(answer.dataValues.createdAt)
@@ -60,3 +61,39 @@ export const getAllAnswersByQuestionId = async (req, res) => {
         res.status(404).json({msg: 'Error To Add An New Question!'})
     }
 }
+
+
+
+// http://localhost:5000/api/answers/3/-5   ---> (answerId)/(newVotes)
+export const voteToAnswer = async (req, res) => {
+
+    let answerId = req.params.answerId;
+    let newScore = req.params.newScore;
+
+    try{
+
+        // Update the votes score to specific answer
+        const answer = await Answers.update(
+            {
+
+                score: newScore
+
+            },
+            {
+                where: { 
+                    
+                    id: answerId
+                }   
+            })    
+            
+            // לבדוק אם מחזיר באמת את השורה המעודכנת
+        res.json(updatedRow)
+    }
+    catch(error){
+
+        console.log(error)
+
+        res.status(404).json({msg: 'Error To Update Answer Score!'})
+    }
+}
+

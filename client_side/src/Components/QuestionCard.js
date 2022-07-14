@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
-import TagName from "./TagName";
 import ScoreLabel from "./ScoreLabel";
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import AuthorAndDate from "./AuthorAndDate";
+import Title from "./Title";
+import QuestionTags from "./QuestionTags";
+import QuestionOrAnswerDetails from "./QuestionOrAnswerDetails";
+import "../Components/ComponentsStyle/QuestionCard.css";
+import { getTotalVotesToQuestion } from "../AssistantFunctins/QuestionCardFun.js";
 import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 
 
@@ -34,23 +40,14 @@ const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, allAnswersArr}
     return(
             <div>
                 <Card className={"mb-5 w-75"}>
-                <Card.Header className={"fs-3 fw-bold"}>{question.title}</Card.Header>
+                <Link id={"questionTitle"} to={'/displayAnswers/' + question.id}>
+                    <Card.Header className={"fs-1 fw-bold"}><Title title={question.title}/></Card.Header>
+                </Link>
                 <Card.Body>
-                    <p>
-                        {question.question}
-                    </p>
-                    {
-                        (question.tags.split(',')).map((tagName, idx) => {
-
-                            return <TagName key={idx} tagName={tagName}/>
-                        })
-                    }
-                    <div>
-                        <p>
-                            {`asked ${(question.createdAt).substring(0, (question.createdAt).indexOf("T"))} by ${question.nickname}`}
-                        </p>
-                    </div>
-                    <ScoreLabel score={question.votes} labelName={"votesScore"}/>
+                    <QuestionOrAnswerDetails description={question.question}/>
+                    <QuestionTags tags={question.tags}/>
+                    <AuthorAndDate element={question} />
+                    <ScoreLabel score={getTotalVotesToQuestion(allAnswerOfThisQuestion)} labelName={"votesScore"}/>
                     <ScoreLabel score={allAnswerOfThisQuestion !== undefined ? allAnswerOfThisQuestion.allAnswerArr.length : 0} labelName={"answersScore"}/>
                 </Card.Body>
                 </Card>

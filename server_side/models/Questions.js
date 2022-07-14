@@ -19,9 +19,6 @@ const Questions = db.define('allquestions',{
     tags: {
         type: DataTypes.STRING
     },
-    votes: {
-        type: DataTypes.INTEGER
-    },
     createdAt: {    
         field: 'createdat', 
         type: DataTypes.DATE

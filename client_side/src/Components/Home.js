@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Nav from './Nav';
 import PopUpAddQuestion from "./PopUpAddQuestion";
 import { retriveUsersDataFromAccessToken } from "../Redux/Actions/logInRegisterActions.js";

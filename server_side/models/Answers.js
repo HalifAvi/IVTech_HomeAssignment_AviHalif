@@ -16,6 +16,9 @@ const Answers = db.define('allanswers',{
     answer: {
         type: DataTypes.STRING
     },
+    score: {
+        type: DataTypes.INTEGER
+    },
     createdAt: {    
         field: 'createdat', 
         type: DataTypes.DATE
