@@ -36,7 +36,6 @@ export const addAnswer = async (req, res) => {
 }
 
 
-// http://localhost:5000/api/answers/getAllAnswersByQuestionId/3   ---> (questionId)
 export const getAllAnswersByQuestionId = async (req, res) => {
 
     let questionID = req.params.questionID;
@@ -64,20 +63,17 @@ export const getAllAnswersByQuestionId = async (req, res) => {
 
 
 
-// http://localhost:5000/api/answers/3/-5   ---> (answerId)/(newVotes)
 export const voteToAnswer = async (req, res) => {
 
-    let answerId = req.params.answerId;
-    let newScore = req.params.newScore;
+    let answerId = req.body.answerID;
+    let newScore = req.body.updatedVote;
 
     try{
 
         // Update the votes score to specific answer
-        const answer = await Answers.update(
+        await Answers.update(
             {
-
                 score: newScore
-
             },
             {
                 where: { 
@@ -86,14 +82,13 @@ export const voteToAnswer = async (req, res) => {
                 }   
             })    
             
-            // לבדוק אם מחזיר באמת את השורה המעודכנת
-        res.json(updatedRow)
+        res.json({msg: 'Answer Vote Was Updated Successfuly!'})
     }
     catch(error){
 
         console.log(error)
 
-        res.status(404).json({msg: 'Error To Update Answer Score!'})
+        res.status(404).json({msg: 'Error To Update Answer Vote!'})
     }
 }
 

@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.post('/createAnswer', VerifyToken, addAnswer);
 router.get('/getAllAnswersByQuestionId/:questionID', VerifyToken, getAllAnswersByQuestionId);
-router.put('/voteToAnswer', VerifyToken, voteToAnswer);
+router.put('/voteAnswer', VerifyToken, voteToAnswer);
 
 
 

@@ -1,7 +1,8 @@
 import {
 
     GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
-    ADD_ANSWER
+    ADD_ANSWER,
+    VOTE
 
 } from '../reduxConstants';
 
@@ -43,7 +44,7 @@ export const addNewAnswer = (description, questionId) => async (dispatch, getSta
 
     try{
 
-        let response = await axios.post(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_ADD_ANSWER_URL}`,{
+        await axios.post(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_ADD_ANSWER_URL}`,{
 
             questionId : questionId,
             userId: userId, 
@@ -71,6 +72,33 @@ export const addNewAnswer = (description, questionId) => async (dispatch, getSta
 }
 
 
+export const voteToAnswer = (answerID, updatedVote) => async (dispatch) => {
 
+    try{
 
+        await axios.put(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_VOTE_ANSWER_URL}`,
+            {
+
+                answerID : answerID,
+                updatedVote : updatedVote
+            },
+            {
+            withCredentials: true,
+            headers: {
+
+                'Access-Control-Allow-Origin' : '*',
+                'Content-Type' : 'application/json'
+            }
+        })
+
+        dispatch({
+    
+            type: VOTE
+        })
+    }
+    catch(e){
+
+        console.log(e);
+    }
+}
 

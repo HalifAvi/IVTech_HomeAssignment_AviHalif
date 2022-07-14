@@ -12,32 +12,17 @@ import { useEffect } from "react";
 
 
 
-const DisplayQuestionAnswers = ({allQuestionsArr, getAllAnswersOfSpecificQuestion, AllAnswersOfSpecificQuestion}) => {
+const DisplayQuestionAnswers = ({allQuestionsArr}) => {
 
     // FOR GETTING PARAMS FROM URL
     const params = useParams();
 
     const displayedQuestion = allQuestionsArr.find(question => question.id === Number(params.questionId));
 
-    useEffect( ()=>{
-
-        const fetchData = async () => {
-            
-            await getAllAnswersOfSpecificQuestion(params.questionId);
-
-        }
-
-        fetchData();
-
-    },[])
-
-
     return(
         <>
-            {}
             <div className="d-flex flex-row justify-content-center">
                 <div className={"col-md-6 justify-content-center w-50 ms-5"}>
-
                     <Title title={`Question Title: ${displayedQuestion.title}`} />
                     <AuthorAndDate element={displayedQuestion} />
                     <hr className={"breakLine"} />
@@ -45,7 +30,7 @@ const DisplayQuestionAnswers = ({allQuestionsArr, getAllAnswersOfSpecificQuestio
                     <QuestionTags tags={displayedQuestion.tags} />
 
                     <Title title={"Answers :"} />
-                    <AnswersList answersArray={AllAnswersOfSpecificQuestion} />
+                    <AnswersList questionId={params.questionId} />
                     <hr className={"breakLine"} />
 
                     <AddAnswerForm questionId={params.questionId}/>

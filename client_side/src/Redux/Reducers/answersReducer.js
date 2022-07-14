@@ -2,7 +2,8 @@ import { getTotalVotesToQuestion } from "../../AssistantFunctins/AnswersReducerF
 import {
 
     GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
-    ADD_ANSWER
+    ADD_ANSWER,
+    VOTE
 
 } from '../reduxConstants';
 
@@ -28,6 +29,10 @@ export const answersReducer = (state=initStateAnswersReducer, action={}) => {
             return {...state, AllAnswersOfSpecificQuestion: action.payload, currentNumOfAnswers: numAnsOfCurrQue, currentVotes : votes}
 
         case ADD_ANSWER :
+
+            return {...state}
+
+        case VOTE :
 
             return {...state}
 

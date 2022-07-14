@@ -12,7 +12,6 @@ import "../Components/ComponentsStyle/QuestionCard.css";
 import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 
 
-
 const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, currentVotes, currentNumOfAnswers}) => {
 
     useEffect(()=>{
