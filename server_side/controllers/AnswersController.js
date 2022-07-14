@@ -19,7 +19,7 @@ export const addAnswer = async (req, res) => {
         const answer = await Answers.create({
 
             userid: userId,
-            questionid: questionId,
+            questionid: Number(questionId),
             nickname: nickname,
             answer: userAnswer,
             score: 0

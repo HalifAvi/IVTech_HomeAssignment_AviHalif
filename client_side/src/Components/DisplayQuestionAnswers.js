@@ -6,18 +6,31 @@ import AnswersList from "./AnswersList";
 import QuestionTags from "./QuestionTags";
 import AddAnswerForm from "./AddAnswerForm";
 import QuestionOrAnswerDetails from "./QuestionOrAnswerDetails";
+import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 import "./ComponentsStyle/DisplayQuestionAnswers.css";
+import { useEffect } from "react";
 
 
-const DisplayQuestionAnswers = ({allQuestionsArr, allAnswersArr}) => {
+
+const DisplayQuestionAnswers = ({allQuestionsArr, getAllAnswersOfSpecificQuestion, AllAnswersOfSpecificQuestion}) => {
 
     // FOR GETTING PARAMS FROM URL
     const params = useParams();
 
     const displayedQuestion = allQuestionsArr.find(question => question.id === Number(params.questionId));
-    const answersArr = allAnswersArr.find(answers => answers.questionId === Number(params.questionId));
 
-    const displayedAnswers = answersArr.allAnswerArr;
+    useEffect( ()=>{
+
+        const fetchData = async () => {
+            
+            await getAllAnswersOfSpecificQuestion(params.questionId);
+
+        }
+
+        fetchData();
+
+    },[])
+
 
     return(
         <>
@@ -32,17 +45,10 @@ const DisplayQuestionAnswers = ({allQuestionsArr, allAnswersArr}) => {
                     <QuestionTags tags={displayedQuestion.tags} />
 
                     <Title title={"Answers :"} />
-                    <AnswersList answersArray={displayedAnswers} />
+                    <AnswersList answersArray={AllAnswersOfSpecificQuestion} />
                     <hr className={"breakLine"} />
 
-                    <AddAnswerForm />
-
-
-
-
-
-
-                    
+                    <AddAnswerForm questionId={params.questionId}/>
                 </div>
             </div>
         </>
@@ -54,12 +60,19 @@ const mapStateToProps = (state) => {
     return{
 
         allQuestionsArr : state.questionsReducer.allQuestionsArr,
-        allAnswersArr : state.answersReducer.allAnswersArr
-
+        AllAnswersOfSpecificQuestion : state.answersReducer.AllAnswersOfSpecificQuestion
     }
 }
 
-export default connect(mapStateToProps, null)(DisplayQuestionAnswers);
+const mapDispatcToProps = (dispatch) => {
+
+    return{
+
+        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatcToProps)(DisplayQuestionAnswers);
 
 
        

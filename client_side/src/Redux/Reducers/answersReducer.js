@@ -1,13 +1,17 @@
+import { getTotalVotesToQuestion } from "../../AssistantFunctins/AnswersReducerFun.js";
 import {
 
-    GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION
+    GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
+    ADD_ANSWER
 
 } from '../reduxConstants';
 
 
 const initStateAnswersReducer = {
 
-    allAnswersArr : []
+    AllAnswersOfSpecificQuestion : [],
+    currentVotes : 0, 
+    currentNumOfAnswers : 0
 }
 
 
@@ -17,12 +21,21 @@ export const answersReducer = (state=initStateAnswersReducer, action={}) => {
 
         case GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION : 
 
-            state.allAnswersArr.push(action.payload);
+            const numAnsOfCurrQue = (action.payload).length;
 
-            return {...state, allAnswersArr:[...state.allAnswersArr]}
+            const votes = getTotalVotesToQuestion(action.payload);
+
+            return {...state, AllAnswersOfSpecificQuestion: action.payload, currentNumOfAnswers: numAnsOfCurrQue, currentVotes : votes}
+
+        case ADD_ANSWER :
+
+            return {...state}
 
         default: 
 
             return {...state}
     }
 }
+
+
+

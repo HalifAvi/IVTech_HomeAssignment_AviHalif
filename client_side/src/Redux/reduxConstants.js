@@ -5,6 +5,8 @@ export const REGISTER = 'REGISTER';
 
 export const ADD_QUESTION = 'ADD_QUESTION';
 
+export const ADD_ANSWER = 'ADD_ANSWER';
+
 export const RETRIVE_USERS_DATA = 'RETRIVE_USERS_DATA';
 
 export const SET_ALL_QUESTIONS_ARR = 'SET_ALL_QUESTIONS_ARR';

@@ -1,6 +1,7 @@
 import {
 
-    GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION
+    GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
+    ADD_ANSWER
 
 } from '../reduxConstants';
 
@@ -23,17 +24,10 @@ export const getAllAnswersOfSpecificQuestion = (questionID) => async (dispatch) 
                 }
         })
 
-        const allAnswerOfSpecificQue = {
-
-            questionId : questionID,
-            allAnswerArr : (response.data).length !== 0 ? response.data : []
-
-        }
-
         dispatch({
     
             type: GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
-            payload: allAnswerOfSpecificQue
+            payload: response.data
         })
     }
     catch(e){
@@ -43,67 +37,40 @@ export const getAllAnswersOfSpecificQuestion = (questionID) => async (dispatch) 
 }
 
 
-// export const addNewQuestion = (title, question, tags) => async (dispatch, getStatus) => {
+export const addNewAnswer = (description, questionId) => async (dispatch, getStatus) => {
 
-//     let {userId, nickname} = getStatus().logInRegisterReducer;
+    let {userId, nickname} = getStatus().logInRegisterReducer;
 
-//     try{
+    try{
 
-//         let response = await axios.post(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_ADD_QUESTION_URL}`,{
+        let response = await axios.post(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_ADD_ANSWER_URL}`,{
 
-//             userId: userId, 
-//             nickname: nickname,
-//             title: title,
-//             question: question,
-//             tags: tags,
-//         },{
+            questionId : questionId,
+            userId: userId, 
+            nickname: nickname,
+            userAnswer: description,
+        },{
 
-//             withCredentials: true,
-//             headers: {
+            withCredentials: true,
+            headers: {
 
-//                 'Access-Control-Allow-Origin' : '*',
-//                 'Content-Type' : 'application/json'
-//             }
-//         })
+                'Access-Control-Allow-Origin' : '*',
+                'Content-Type' : 'application/json'
+            }
+        })
 
-//         const newQuestion = {
-
-//             userId: userId, 
-//             createdAt: response.data,
-//             title: title,
-//             question: question,
-//             tags: tags
-//         }
-
-//         dispatch({
+        dispatch({
     
-//             type: ADD_QUESTION,
-//             payload: newQuestion
-//         })
-//     }
-//     catch(e){
+            type: ADD_ANSWER
+        })
+    }
+    catch(e){
 
-//         console.log(e);
-//     }
-// }
-
+        console.log(e);
+    }
+}
 
 
-// export const stringToSearch = (stringToSearch) => async (dispatch, getStatus) => {
-
-//     const {allQuestionsArr} = getStatus().questionsReducer;
-
-//     const questionsArrToDisplay = allQuestionsArr.filter((question)=> {
-
-//         return (question.title).includes(stringToSearch)
-//     })
-
-//     dispatch ({
-
-//         type: CHANGE_DISPLAYED_QUESTIONS,
-//         payload: questionsArrToDisplay
-//     })
-// }
 
 
 

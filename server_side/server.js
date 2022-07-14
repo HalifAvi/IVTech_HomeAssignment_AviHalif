@@ -54,4 +54,4 @@ app.listen(process.env.PORT||8080, ()=> {
 
 app.use('/api/users', UsersRoute);
 app.use('/api/questions', QuestionsRoute);
-app.use('/api/answers', AnswersRoute);
+app.use('/api/answers', AnswersRoute);   

@@ -9,14 +9,11 @@ import Title from "./Title";
 import QuestionTags from "./QuestionTags";
 import QuestionOrAnswerDetails from "./QuestionOrAnswerDetails";
 import "../Components/ComponentsStyle/QuestionCard.css";
-import { getTotalVotesToQuestion } from "../AssistantFunctins/QuestionCardFun.js";
 import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 
 
 
-const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, allAnswersArr}) => {
-
-    const allAnswerOfThisQuestion = allAnswersArr.find(element => element.questionId == question.id);
+const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, currentVotes, currentNumOfAnswers}) => {
 
     useEffect(()=>{
 
@@ -47,8 +44,8 @@ const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, allAnswersArr}
                     <QuestionOrAnswerDetails description={question.question}/>
                     <QuestionTags tags={question.tags}/>
                     <AuthorAndDate element={question} />
-                    <ScoreLabel score={getTotalVotesToQuestion(allAnswerOfThisQuestion)} labelName={"votesScore"}/>
-                    <ScoreLabel score={allAnswerOfThisQuestion !== undefined ? allAnswerOfThisQuestion.allAnswerArr.length : 0} labelName={"answersScore"}/>
+                    <ScoreLabel score={currentVotes} labelName={"votesScore"}/>
+                    <ScoreLabel score={currentNumOfAnswers} labelName={"answersScore"}/>
                 </Card.Body>
                 </Card>
             </div>
@@ -59,7 +56,8 @@ const mapStateToProps = (state) => {
 
     return{
 
-        allAnswersArr : state.answersReducer.allAnswersArr
+        currentVotes : state.answersReducer.currentVotes,
+        currentNumOfAnswers : state.answersReducer.currentNumOfAnswers
     }
 }
 
