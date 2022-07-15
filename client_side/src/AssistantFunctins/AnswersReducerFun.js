@@ -1,9 +1,9 @@
 
-export const getTotalVotesToQuestion = (allAnswerOfThisQuestion) => {
+export const getTotalVotesToQuestion = (allAnswersOfSpecificQuestion) => {
 
     let score = 0;
 
-        (allAnswerOfThisQuestion).map((answer)=>{
+        (allAnswersOfSpecificQuestion).map((answer)=>{
 
             score += answer.score
         })

@@ -16,8 +16,6 @@ const VotingIcon = ({currentScore, currentAnswerId, voteToAnswer, getAllAnswersO
         await voteToAnswer(currentAnswerId, updatedVote);
 
         setScore(updatedVote);
-
-        // await getAllAnswersOfSpecificQuestion(questionId);
     }
 
     return(

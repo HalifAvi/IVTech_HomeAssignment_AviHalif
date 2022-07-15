@@ -8,7 +8,6 @@ import AddAnswerForm from "./AddAnswerForm";
 import QuestionOrAnswerDetails from "./QuestionOrAnswerDetails";
 import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 import "./ComponentsStyle/DisplayQuestionAnswers.css";
-import { useEffect } from "react";
 
 
 
@@ -45,7 +44,7 @@ const mapStateToProps = (state) => {
     return{
 
         allQuestionsArr : state.questionsReducer.allQuestionsArr,
-        AllAnswersOfSpecificQuestion : state.answersReducer.AllAnswersOfSpecificQuestion
+        allAnswersOfSpecificQuestion : state.answersReducer.allAnswersOfSpecificQuestion
     }
 }
 

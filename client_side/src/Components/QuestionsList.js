@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import QuestionCard from "./QuestionCard";
+import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 
 
 
@@ -24,11 +25,20 @@ const mapStateToProps = (state) => {
 
     return{
 
+        allAnswersOfSpecificQuestion : state.answersReducer.allAnswersOfSpecificQuestion,
         questionsArrToDisplay : state.questionsReducer.questionsArrToDisplay
     }
 }
 
-export default connect(mapStateToProps, null)(QuestionsList);
+const mapDispatcToProps = (dispatch) => {
+
+    return{
+
+        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatcToProps)(QuestionsList);
 
 
        

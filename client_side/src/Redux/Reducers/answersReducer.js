@@ -1,7 +1,7 @@
-import { getTotalVotesToQuestion } from "../../AssistantFunctins/AnswersReducerFun.js";
 import {
 
     GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
+    GET_VOTES_NUM_OF_ANSWERS,
     ADD_ANSWER,
     VOTE
 
@@ -10,7 +10,7 @@ import {
 
 const initStateAnswersReducer = {
 
-    AllAnswersOfSpecificQuestion : [],
+    allAnswersOfSpecificQuestion : [],
     currentVotes : 0, 
     currentNumOfAnswers : 0
 }
@@ -22,11 +22,7 @@ export const answersReducer = (state=initStateAnswersReducer, action={}) => {
 
         case GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION : 
 
-            const numAnsOfCurrQue = (action.payload).length;
-
-            const votes = getTotalVotesToQuestion(action.payload);
-
-            return {...state, AllAnswersOfSpecificQuestion: action.payload, currentNumOfAnswers: numAnsOfCurrQue, currentVotes : votes}
+            return {...state, allAnswersOfSpecificQuestion: action.payload}
 
         case ADD_ANSWER :
 
@@ -35,6 +31,12 @@ export const answersReducer = (state=initStateAnswersReducer, action={}) => {
         case VOTE :
 
             return {...state}
+
+        case GET_VOTES_NUM_OF_ANSWERS :
+
+            const {numAnsOfCurrQue, votes} = action.payload;
+
+            return {...state, currentNumOfAnswers: numAnsOfCurrQue, currentVotes : votes}
 
         default: 
 

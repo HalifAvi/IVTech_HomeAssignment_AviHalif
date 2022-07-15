@@ -8,7 +8,7 @@ import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions
 import "./ComponentsStyle/AnswersList.css";
 
 
-const AnswersList = ({questionId, getAllAnswersOfSpecificQuestion, AllAnswersOfSpecificQuestion}) => {
+const AnswersList = ({questionId, getAllAnswersOfSpecificQuestion, allAnswersOfSpecificQuestion}) => {
 
     useEffect( ()=>{
 
@@ -24,9 +24,8 @@ const AnswersList = ({questionId, getAllAnswersOfSpecificQuestion, AllAnswersOfS
 
     return(
             <div>
-                {console.log(AllAnswersOfSpecificQuestion)}
                 {
-                    AllAnswersOfSpecificQuestion.map((answer, idx)=>{
+                    allAnswersOfSpecificQuestion.map((answer, idx)=>{
 
                         return (
                             
@@ -46,7 +45,7 @@ const mapStateToProps = (state) => {
 
     return{
 
-        AllAnswersOfSpecificQuestion : state.answersReducer.AllAnswersOfSpecificQuestion
+        allAnswersOfSpecificQuestion : state.answersReducer.allAnswersOfSpecificQuestion
     }
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from 'react-bootstrap/Card';
 import ScoreLabel from "./ScoreLabel";
 import { useEffect } from "react";
@@ -8,11 +8,15 @@ import AuthorAndDate from "./AuthorAndDate";
 import Title from "./Title";
 import QuestionTags from "./QuestionTags";
 import QuestionOrAnswerDetails from "./QuestionOrAnswerDetails";
-import "../Components/ComponentsStyle/QuestionCard.css";
 import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
+import { getCurrentVotesAndAnswers } from "../Redux/Actions/answersActions.js";
+import "../Components/ComponentsStyle/QuestionCard.css";
 
 
-const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, currentVotes, currentNumOfAnswers}) => {
+
+
+const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, currentVotes,
+                       getCurrentVotesAndAnswers, currentNumOfAnswers}) => {
 
     useEffect(()=>{
 
@@ -21,7 +25,8 @@ const QuestionCard = ({question, getAllAnswersOfSpecificQuestion, currentVotes, 
             try {
 
                 await getAllAnswersOfSpecificQuestion(question.id);
-            
+                await getCurrentVotesAndAnswers();
+
             } catch(e){
 
                 console.log(e)
@@ -56,7 +61,8 @@ const mapStateToProps = (state) => {
     return{
 
         currentVotes : state.answersReducer.currentVotes,
-        currentNumOfAnswers : state.answersReducer.currentNumOfAnswers
+        currentNumOfAnswers : state.answersReducer.currentNumOfAnswers,
+        allAnswersOfSpecificQuestion : state.answersReducer.allAnswersOfSpecificQuestion
     }
 }
 
@@ -64,7 +70,8 @@ const mapDispatcToProps = (dispatch) => {
 
     return{
 
-        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId))
+        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId)),
+        getCurrentVotesAndAnswers : ()=> dispatch(getCurrentVotesAndAnswers())
     }
 }
 

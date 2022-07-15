@@ -34,9 +34,3 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(null, mapDispatchToProps)(Nav);
 
-            {/* <Stack spacing={2} direction="row">
-                <Button component={Link} to={'/home'}>Home</Button>
-                <Button component={Link} to={'/register'}>Register</Button>
-                <Button component={Link} to={'/login'}>Login</Button>
-                <Button>Log out</Button>
-            </Stack> */}

@@ -1,15 +1,6 @@
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
-
-// We can decode the email
-// if we will import jwt from jetwebtoken
-// we can do also verification to the token that we are getting
-// import jwt from "jetwebtoken";
-
-
-import jwt_decode from "jwt-decode";
-
 // cause we send GET request
 import axios from "axios";
 

@@ -1,11 +1,12 @@
 import {
 
     GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
+    GET_VOTES_NUM_OF_ANSWERS,
     ADD_ANSWER,
     VOTE
 
 } from '../reduxConstants';
-
+import { getTotalVotesToQuestion } from "../../AssistantFunctins/AnswersReducerFun.js";
 import axios from 'axios';
 
 
@@ -35,6 +36,20 @@ export const getAllAnswersOfSpecificQuestion = (questionID) => async (dispatch) 
 
         console.log(e);
     }
+}
+
+export const getCurrentVotesAndAnswers = () => async (dispatch, getStatus) => {
+
+    let {allAnswersOfSpecificQuestion} = getStatus().answersReducer;
+
+    const votes = getTotalVotesToQuestion(allAnswersOfSpecificQuestion);
+    const numAnsOfCurrQue = allAnswersOfSpecificQuestion.length;
+
+    dispatch ({
+
+        type: GET_VOTES_NUM_OF_ANSWERS,
+        payload: { numAnsOfCurrQue, votes }
+    })
 }
 
 
