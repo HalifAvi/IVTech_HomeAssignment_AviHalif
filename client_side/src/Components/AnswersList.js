@@ -1,61 +1,21 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import AuthorAndDate from "./AuthorAndDate";
-import VotingIcon from "./VotingIcon";
-import { useEffect } from "react";
-import QuestionOrAnswerDetails from "./QuestionOrAnswerDetails";
-import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
-import "./ComponentsStyle/AnswersList.css";
+import React from "react";
+import AnswerCard from "../Components/AnswerCard"; 
 
 
-const AnswersList = ({questionId, getAllAnswersOfSpecificQuestion, allAnswersOfSpecificQuestion}) => {
-
-    useEffect( ()=>{
-
-        const fetchData = async () => {
-            
-            await getAllAnswersOfSpecificQuestion(questionId);
-        }
-
-        fetchData();
-
-    },[])
-
-
+const AnswersList = ({questionId, allAnswersOfSpecificQuestion}) => {
+    
     return(
             <div>
                 {
                     allAnswersOfSpecificQuestion.map((answer, idx)=>{
 
-                        return (
-                            
-                            <div key={idx} className={"answerSection"}>
-                                <VotingIcon questionId={questionId} currentScore={answer.score} currentAnswerId={answer.id}/>
-                                <QuestionOrAnswerDetails description={answer.answer}/>
-                                <AuthorAndDate element={answer} />
-                            </div>
-                        )
+                        return <AnswerCard key={idx} answer={answer} questionId={questionId}/>
                     })
                 }
             </div>
     )
 }
 
-const mapStateToProps = (state) => {
 
-    return{
-
-        allAnswersOfSpecificQuestion : state.answersReducer.allAnswersOfSpecificQuestion
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-
-    return{
-
-        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AnswersList);
+export default AnswersList;
 

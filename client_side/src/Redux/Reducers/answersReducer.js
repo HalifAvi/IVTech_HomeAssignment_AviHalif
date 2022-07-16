@@ -1,7 +1,6 @@
 import {
 
-    GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
-    GET_VOTES_NUM_OF_ANSWERS,
+    GET_ALL_ANSWERS,
     ADD_ANSWER,
     VOTE
 
@@ -10,9 +9,7 @@ import {
 
 const initStateAnswersReducer = {
 
-    allAnswersOfSpecificQuestion : [],
-    currentVotes : 0, 
-    currentNumOfAnswers : 0
+    allAnswers : []
 }
 
 
@@ -20,29 +17,22 @@ export const answersReducer = (state=initStateAnswersReducer, action={}) => {
 
     switch(action.type){
 
-        case GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION : 
-
-            return {...state, allAnswersOfSpecificQuestion: action.payload}
-
         case ADD_ANSWER :
 
             return {...state}
 
+        case GET_ALL_ANSWERS :
+
+            return {...state, allAnswers: action.payload}
+
         case VOTE :
 
             return {...state}
-
-        case GET_VOTES_NUM_OF_ANSWERS :
-
-            const {numAnsOfCurrQue, votes} = action.payload;
-
-            return {...state, currentNumOfAnswers: numAnsOfCurrQue, currentVotes : votes}
 
         default: 
 
             return {...state}
     }
 }
-
 
 

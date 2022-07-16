@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { voteToAnswer } from "../Redux/Actions/answersActions.js";
-import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 import "./ComponentsStyle/VotingIcon.css";
 
 
-const VotingIcon = ({currentScore, currentAnswerId, voteToAnswer, getAllAnswersOfSpecificQuestion, questionId}) => {
+const VotingIcon = ({paramsToChange, currentAnswerId, voteToAnswer}) => {
 
-    const [score, setScore] = useState(currentScore);
+    const {score, setScore} = paramsToChange;
  
     const handleVoting = async (voteToAnswer, operator, currentAnswerId) => {
 
@@ -33,8 +32,7 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
  
-        voteToAnswer : (currentAnswerId, updatedVote)=> dispatch(voteToAnswer(currentAnswerId, updatedVote)),
-        getAllAnswersOfSpecificQuestion : (currentAnswerId) => dispatch(getAllAnswersOfSpecificQuestion(currentAnswerId))
+        voteToAnswer : (currentAnswerId, updatedVote)=> dispatch(voteToAnswer(currentAnswerId, updatedVote))
     }
 }
 

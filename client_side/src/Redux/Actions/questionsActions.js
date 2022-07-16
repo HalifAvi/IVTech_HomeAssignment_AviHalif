@@ -2,9 +2,11 @@ import {
 
     ADD_QUESTION,
     SET_ALL_QUESTIONS_ARR,
-    CHANGE_DISPLAYED_QUESTIONS
+    CHANGE_DISPLAYED_QUESTIONS,
+    GET_ALL_VOTES_AND_NUM_OF_ANSWERS
 
 } from '../reduxConstants';
+import { getTotalVotesToQuestion } from "../../AssistantFunctins/QuestionsActionsFun.js";
 
 import axios from 'axios';
 
@@ -98,6 +100,33 @@ export const stringToSearch = (stringToSearch) => async (dispatch, getStatus) =>
         payload: questionsArrToDisplay
     })
 }
+
+
+export const getVotesAndNumOfAnswers = () => async (dispatch, getStatus) => {
+
+    const {allQuestionsArr} = getStatus().questionsReducer;
+    const {allAnswers} = getStatus().answersReducer;
+
+    let allVotesAndNumOfAnswersForAllQuestions = [];
+
+    allQuestionsArr.forEach(question => {
+
+        const answersArr = allAnswers.filter(answer=> answer.questionid === question.id)
+
+        allVotesAndNumOfAnswersForAllQuestions.push({
+
+            votes: getTotalVotesToQuestion(answersArr),
+            answers: answersArr.length
+        })
+    });
+
+    dispatch ({
+
+        type: GET_ALL_VOTES_AND_NUM_OF_ANSWERS,
+        payload: allVotesAndNumOfAnswersForAllQuestions
+    })
+}
+
 
 
 

@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import QuestionCard from "./QuestionCard";
-import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 
 
-
-const QuestionsList = ({questionsArrToDisplay}) => {
+const QuestionsList = ({questionsArrToDisplay, allVotesAndNumOfAnswersForAllQuestions}) => {
 
     return(
         <div className="d-flex flex-row justify-content-center">
@@ -13,7 +11,9 @@ const QuestionsList = ({questionsArrToDisplay}) => {
                 {
                     questionsArrToDisplay.map((question, idx)=>{
 
-                        return <QuestionCard key={idx} question={question}/>
+                        return <QuestionCard key={idx} question={question}
+                                answers={allVotesAndNumOfAnswersForAllQuestions[idx] !== undefined ? allVotesAndNumOfAnswersForAllQuestions[idx].answers : 0}
+                                votes={allVotesAndNumOfAnswersForAllQuestions[idx] !== undefined ? allVotesAndNumOfAnswersForAllQuestions[idx].votes : 0}/>
                     })
                 }  
             </div>
@@ -25,20 +25,13 @@ const mapStateToProps = (state) => {
 
     return{
 
-        allAnswersOfSpecificQuestion : state.answersReducer.allAnswersOfSpecificQuestion,
-        questionsArrToDisplay : state.questionsReducer.questionsArrToDisplay
+        questionsArrToDisplay : state.questionsReducer.questionsArrToDisplay,
+        allVotesAndNumOfAnswersForAllQuestions : state.questionsReducer.allVotesAndNumOfAnswersForAllQuestions
     }
 }
 
-const mapDispatcToProps = (dispatch) => {
 
-    return{
-
-        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatcToProps)(QuestionsList);
+export default connect(mapStateToProps, null)(QuestionsList);
 
 
        

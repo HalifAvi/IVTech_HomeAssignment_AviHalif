@@ -2,7 +2,8 @@
 #votingSection {
 
     position: absolute;
-    left: 500px;
+    left: 420px;
+    z-index: 1000;
 }
 
 .arrowImg {

@@ -3,16 +3,25 @@ import Nav from './Nav';
 import PopUpAddQuestion from "./PopUpAddQuestion";
 import { retriveUsersDataFromAccessToken } from "../Redux/Actions/logInRegisterActions.js";
 import { getAllQuestions } from "../Redux/Actions/questionsActions.js";
+import { getAllAnswersOfAllQuestions } from "../Redux/Actions/answersActions.js";
+import { getVotesAndNumOfAnswers } from "../Redux/Actions/questionsActions.js";
 import { connect } from "react-redux";
 import QuestionsList from "./QuestionsList";
 
 
-const Home = ({retriveUsersDataFromAccessToken, getAllQuestions}) => {
+const Home = ({retriveUsersDataFromAccessToken, getAllQuestions, getAllAnswersOfAllQuestions, getVotesAndNumOfAnswers}) => {
 
     useEffect(()=>{
 
-        retriveUsersDataFromAccessToken();
-        getAllQuestions();
+        const getAnswersInfo = async () => {
+            
+            await retriveUsersDataFromAccessToken();
+            await getAllQuestions();
+            await getAllAnswersOfAllQuestions();
+            await getVotesAndNumOfAnswers();
+        }
+
+        getAnswersInfo();
 
     }, [])
 
@@ -26,12 +35,15 @@ const Home = ({retriveUsersDataFromAccessToken, getAllQuestions}) => {
     )
 }
 
+
 const mapDispatchToProps = (dispatch) => {
 
     return{
 
         retriveUsersDataFromAccessToken : ()=> dispatch(retriveUsersDataFromAccessToken()),
-        getAllQuestions : ()=> dispatch(getAllQuestions())
+        getAllQuestions : ()=> dispatch(getAllQuestions()),
+        getAllAnswersOfAllQuestions : ()=> dispatch(getAllAnswersOfAllQuestions()),
+        getVotesAndNumOfAnswers : ()=> dispatch(getVotesAndNumOfAnswers())
     }
 }
 

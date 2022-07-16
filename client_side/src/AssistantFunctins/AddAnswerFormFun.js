@@ -1,8 +1,8 @@
-export const handleSubmitAnswer = async (addNewAnswer, getAllAnswersOfSpecificQuestion, description, questionId) => {
+export const handleSubmitAnswer = async (addNewAnswer, getAllAnswersOfAllQuestions, description, questionId) => {
 
     await addNewAnswer(description, questionId);
 
-    await getAllAnswersOfSpecificQuestion(questionId);
+    await getAllAnswersOfAllQuestions();
 
     cleanTextAreaInput();
 }

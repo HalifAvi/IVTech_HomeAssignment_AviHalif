@@ -2,7 +2,8 @@ import {
 
     ADD_QUESTION,
     SET_ALL_QUESTIONS_ARR,
-    CHANGE_DISPLAYED_QUESTIONS
+    CHANGE_DISPLAYED_QUESTIONS,
+    GET_ALL_VOTES_AND_NUM_OF_ANSWERS
 
 } from '../reduxConstants';
 
@@ -10,7 +11,8 @@ import {
 const initStateQuestionsReducer = {
 
     allQuestionsArr : [],
-    questionsArrToDisplay : []
+    questionsArrToDisplay : [],
+    allVotesAndNumOfAnswersForAllQuestions : []
 }
 
 
@@ -31,6 +33,10 @@ export const questionsReducer = (state=initStateQuestionsReducer, action={}) => 
         case CHANGE_DISPLAYED_QUESTIONS :
 
             return {...state, questionsArrToDisplay: action.payload}
+
+        case GET_ALL_VOTES_AND_NUM_OF_ANSWERS :
+
+            return {...state, allVotesAndNumOfAnswersForAllQuestions: action.payload}
 
         default: 
 

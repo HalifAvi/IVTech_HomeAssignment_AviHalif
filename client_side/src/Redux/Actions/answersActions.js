@@ -1,56 +1,11 @@
 import {
 
-    GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
-    GET_VOTES_NUM_OF_ANSWERS,
+    GET_ALL_ANSWERS,
     ADD_ANSWER,
     VOTE
 
 } from '../reduxConstants';
-import { getTotalVotesToQuestion } from "../../AssistantFunctins/AnswersReducerFun.js";
 import axios from 'axios';
-
-
-
-export const getAllAnswersOfSpecificQuestion = (questionID) => async (dispatch) => {
-
-    try{
-
-        let response = await axios.get(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_ALL_ANSWERS_OF_QUE_URL}/${questionID}`,
-
-            {
-                withCredentials: true,
-                headers: {
-
-                    'Access-Control-Allow-Origin' : '*',
-                    'Content-Type' : 'application/json'
-                }
-        })
-
-        dispatch({
-    
-            type: GET_ALL_ANSWERS_OF_SPECIFIC_QUESTION,
-            payload: response.data
-        })
-    }
-    catch(e){
-
-        console.log(e);
-    }
-}
-
-export const getCurrentVotesAndAnswers = () => async (dispatch, getStatus) => {
-
-    let {allAnswersOfSpecificQuestion} = getStatus().answersReducer;
-
-    const votes = getTotalVotesToQuestion(allAnswersOfSpecificQuestion);
-    const numAnsOfCurrQue = allAnswersOfSpecificQuestion.length;
-
-    dispatch ({
-
-        type: GET_VOTES_NUM_OF_ANSWERS,
-        payload: { numAnsOfCurrQue, votes }
-    })
-}
 
 
 export const addNewAnswer = (description, questionId) => async (dispatch, getStatus) => {
@@ -109,6 +64,35 @@ export const voteToAnswer = (answerID, updatedVote) => async (dispatch) => {
         dispatch({
     
             type: VOTE
+        })
+    }
+    catch(e){
+
+        console.log(e);
+    }
+}
+
+
+
+export const getAllAnswersOfAllQuestions = () => async (dispatch) => {
+
+    try{
+
+        let response = await axios.get(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_ALL_ANSWERS_URL}`,
+
+            {
+                withCredentials: true,
+                headers: {
+
+                    'Access-Control-Allow-Origin' : '*',
+                    'Content-Type' : 'application/json'
+                }
+        })
+
+        dispatch({
+    
+            type: GET_ALL_ANSWERS,
+            payload: response.data
         })
     }
     catch(e){

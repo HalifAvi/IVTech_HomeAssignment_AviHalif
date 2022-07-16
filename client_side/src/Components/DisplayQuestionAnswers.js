@@ -6,17 +6,24 @@ import AnswersList from "./AnswersList";
 import QuestionTags from "./QuestionTags";
 import AddAnswerForm from "./AddAnswerForm";
 import QuestionOrAnswerDetails from "./QuestionOrAnswerDetails";
-import { getAllAnswersOfSpecificQuestion } from "../Redux/Actions/answersActions.js";
 import "./ComponentsStyle/DisplayQuestionAnswers.css";
 
 
 
-const DisplayQuestionAnswers = ({allQuestionsArr}) => {
+const DisplayQuestionAnswers = ({allQuestionsArr, allAnswers}) => {
 
     // FOR GETTING PARAMS FROM URL
     const params = useParams();
 
-    const displayedQuestion = allQuestionsArr.find(question => question.id === Number(params.questionId));
+    const displayedQuestion = allQuestionsArr.find(question => question.id === Number(params.questionId)); 
+    const allAnswersOfSpecificQuestion = allAnswers.filter(answer => answer.questionid === Number(params.questionId));
+
+    const sortedAnswersArr = (allAnswersOfSpecificQuestion).sort(function(a, b) {
+
+        return b.score - a.score;
+    });
+
+
 
     return(
         <>
@@ -29,7 +36,7 @@ const DisplayQuestionAnswers = ({allQuestionsArr}) => {
                     <QuestionTags tags={displayedQuestion.tags} />
 
                     <Title title={"Answers :"} />
-                    <AnswersList questionId={params.questionId} />
+                    <AnswersList questionId={params.questionId} allAnswersOfSpecificQuestion={sortedAnswersArr}/>
                     <hr className={"breakLine"} />
 
                     <AddAnswerForm questionId={params.questionId}/>
@@ -44,19 +51,12 @@ const mapStateToProps = (state) => {
     return{
 
         allQuestionsArr : state.questionsReducer.allQuestionsArr,
-        allAnswersOfSpecificQuestion : state.answersReducer.allAnswersOfSpecificQuestion
+        allAnswers : state.answersReducer.allAnswers
     }
 }
 
-const mapDispatcToProps = (dispatch) => {
 
-    return{
-
-        getAllAnswersOfSpecificQuestion : (questionId)=> dispatch(getAllAnswersOfSpecificQuestion(questionId))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatcToProps)(DisplayQuestionAnswers);
+export default connect(mapStateToProps, null)(DisplayQuestionAnswers);
 
 
        

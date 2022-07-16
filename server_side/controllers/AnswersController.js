@@ -36,33 +36,6 @@ export const addAnswer = async (req, res) => {
 }
 
 
-export const getAllAnswersByQuestionId = async (req, res) => {
-
-    let questionID = req.params.questionID;
-
-    try{
-
-        // Get all answers from 'allanswers' table according to question id
-        const answer = await Answers.findAll({
-
-            where: { 
-        
-                questionid: questionID
-            }
-        });
-        
-        res.json(answer);
-    }
-    catch(error){
-
-        console.log(error)
-
-        res.status(404).json({msg: 'Error To Add An New Question!'})
-    }
-}
-
-
-
 export const voteToAnswer = async (req, res) => {
 
     let answerId = req.body.answerID;
@@ -92,3 +65,19 @@ export const voteToAnswer = async (req, res) => {
     }
 }
 
+export const getAllAnswers = async (req, res) => {
+
+    try{
+
+        // Get all answers from 'allanswers' table
+        const answer = await Answers.findAll();
+        
+        res.json(answer)
+    }
+    catch(error){
+
+        console.log(error)
+
+        res.status(404).json({msg: 'Error To Add An New Question!'})
+    }
+}
